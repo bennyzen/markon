@@ -235,6 +235,9 @@ export const PREVIEW_THEMES = [
 	{ id: 'magazine', label: 'Magazine' },
 	{ id: 'compact', label: 'Compact' },
 	{ id: 'notebook', label: 'Notebook' },
+	{ id: 'billboard', label: 'Billboard' },
+	{ id: 'prose', label: 'Prose' },
+	{ id: 'geometric', label: 'Geometric' },
 ]
 
 export const getPrefPreviewTheme = () =>

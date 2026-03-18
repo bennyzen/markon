@@ -232,3 +232,104 @@ html[data-preview-theme="notebook"] #preview {
 html[data-preview-theme="notebook"] #previewhtml code:not(pre code) {
 	border-bottom: 1px dashed var(--comment);
 }
+
+/* ===== BILLBOARD ===== */
+html[data-preview-theme="billboard"] #preview {
+	--pv-font: "Public Sans", -apple-system, "Segoe UI", sans-serif;
+	--pv-font-mono: ui-monospace, SFMono-Regular, monospace;
+	--pv-font-size: 15px;
+	--pv-line-height: 1.6;
+	--pv-heading-weight: 100;
+	--pv-heading-letter-spacing: -0.03em;
+	--pv-paragraph-spacing: 0.8em;
+	--pv-blockquote-border: 1px solid var(--text-alpha);
+	--pv-blockquote-bg: transparent;
+	--pv-code-radius: 6px;
+	--pv-code-inline-radius: 4px;
+	--pv-pre-padding: 1em;
+	--pv-hr-height: 1px;
+}
+
+html[data-preview-theme="billboard"] #previewhtml h1 {
+	font-size: 3.5em;
+	line-height: 1.05;
+	margin: 0.6em 0 0.3em;
+}
+
+html[data-preview-theme="billboard"] #previewhtml h2 {
+	font-size: 2.2em;
+	line-height: 1.1;
+	margin: 0.8em 0 0.3em;
+}
+
+html[data-preview-theme="billboard"] #previewhtml h3 {
+	font-weight: 400;
+	font-size: 1.3em;
+}
+
+/* ===== PROSE ===== */
+html[data-preview-theme="prose"] #preview {
+	--pv-font: "Source Serif 4", Georgia, serif;
+	--pv-font-mono: "Courier New", Courier, monospace;
+	--pv-font-size: 17px;
+	--pv-line-height: 1.8;
+	--pv-heading-weight: 700;
+	--pv-heading-style: normal;
+	--pv-paragraph-spacing: 0.5em;
+	--pv-blockquote-style: italic;
+	--pv-blockquote-border: 2px solid var(--accent);
+	--pv-blockquote-bg: transparent;
+	--pv-blockquote-padding: 0 0 0 1.5em;
+	--pv-code-radius: 4px;
+	--pv-code-inline-radius: 3px;
+	--pv-pre-padding: 1em;
+	--pv-pre-border: 1px solid var(--text-alpha);
+	--pv-hr-height: 1px;
+	--pv-link-decoration: underline;
+	--pv-link-decoration-style: solid;
+}
+
+html[data-preview-theme="prose"] #previewhtml h1 {
+	font-size: 2em;
+	margin-top: 1.5em;
+	border-bottom: 2px solid var(--accent);
+	padding-bottom: 0.2em;
+}
+
+html[data-preview-theme="prose"] #previewhtml p + p {
+	text-indent: 1em;
+}
+
+/* ===== GEOMETRIC ===== */
+html[data-preview-theme="geometric"] #preview {
+	--pv-font: "Space Grotesk", -apple-system, "Segoe UI", sans-serif;
+	--pv-font-mono: "Fira Code", "Monaspace Krypton", ui-monospace, monospace;
+	--pv-font-size: 14px;
+	--pv-line-height: 1.6;
+	--pv-heading-weight: 700;
+	--pv-heading-transform: uppercase;
+	--pv-heading-letter-spacing: 0.04em;
+	--pv-paragraph-spacing: 0.6em;
+	--pv-blockquote-border: none;
+	--pv-blockquote-bg: var(--text-alpha);
+	--pv-blockquote-radius: 0;
+	--pv-blockquote-padding: 12px 16px;
+	--pv-code-radius: 0;
+	--pv-code-inline-radius: 0;
+	--pv-pre-padding: 1em;
+	--pv-pre-border: 2px solid var(--accent);
+	--pv-hr-height: 2px;
+	--pv-hr-bg: var(--accent);
+}
+
+html[data-preview-theme="geometric"] #previewhtml h1 {
+	font-size: 1.8em;
+	border-left: 4px solid var(--accent);
+	padding-left: 0.5em;
+}
+
+html[data-preview-theme="geometric"] #previewhtml h2 {
+	font-size: 1.4em;
+	border-left: 3px solid var(--accent);
+	padding-left: 0.5em;
+}

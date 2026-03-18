@@ -259,7 +259,7 @@ const ACTIONS_CONFIG = [
 	},
 	{
 		id: 'cycle-preview-theme',
-		label: 'Preview',
+		label: 'Theme',
 		icon: 'tabler:typography',
 		hotkey: 'ctrl+j',
 		gradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2))',
