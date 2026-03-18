@@ -16,7 +16,7 @@
 </div>
 <hr>
 <div align="center">
-  <a href="#development">Development</a> • <a href="#themes">Themes</a> • <a href="#roadmap">Roadmap</a>
+  <a href="#features">Features</a> • <a href="#shortcuts">Shortcuts</a> • <a href="#themes">Themes</a> • <a href="#development">Development</a>
 	<img src="public/screenshots.png" width="80%" />
 </div>
 
@@ -25,13 +25,34 @@
 - **GFM**: GitHub Flavored Markdown + alerts
 - **Syntax**: 250+ languages with highlighting
 - **Split views**: resizable editor & preview
+- **Reader mode**: full-width preview without editor
 - **Sync views**: bidirectional scroll sync
 - **Auto save**: localStorage persistence
+- **Color schemes**: 14 presets with dark/light modes
+- **Preview themes**: 10 typographic styles (Billboard, GitHub, Terminal, Magazine, etc.)
+- **File handler**: opens `.md` files from your OS file manager
+- **Print/PDF**: print stylesheet for clean PDF export via `Ctrl+P`
 - **FPS profiler**: latency metrics overlay
 - **Spell checker**: toggleable browser spellcheck
-- **Themes**: multiple presets
 - **Hotkeys**: keyboard shortcuts
 - **Offline**: no network required
+
+## Shortcuts
+
+| Key | Action |
+|-----|--------|
+| `Ctrl+E` | Toggle reader mode |
+| `Ctrl+J` | Cycle preview theme |
+| `Ctrl+M` | Toggle dark/light mode |
+| `Ctrl+Shift+M` | Cycle color scheme |
+| `Ctrl+S` | Save as file |
+| `Ctrl+O` | Open file |
+| `Ctrl+K` | Toggle spell checker |
+| `Ctrl+B` | Toggle scroll sync |
+| `Ctrl+Shift+C` | Copy to clipboard |
+| `Ctrl+Shift+V` | Paste from clipboard |
+| `Ctrl+/` | Settings |
+| `Ctrl+P` | Print / Save as PDF |
 
 ## Language Loading & Caching
 
@@ -57,24 +78,30 @@ npm run fix      # fix lint issues
 ```
 
 <details>
-<summary id="themes">Themes</summary>
+<summary id="themes">Themes & Color Schemes</summary>
 
 ![screenshot](public/themes.png)
 
-**markon** supports multiple theme presets with dark/light modes. Custom themes can be created using CSS variables.
+**markon** separates **color schemes** (palette) from **preview themes** (typography & layout). These are independent — any color scheme works with any preview theme.
+
+### Color Schemes
+
+14 built-in schemes, each with dark and light modes: Panda, Muted, Nord, Monokai, Dracula, Solarized, GitHub, One Dark, Gruvbox, Tokyo Night, Ayu, Catppuccin, Tomorrow.
 
 ### Preview Themes
 
-Visit `/themes` to preview all available themes side-by-side in both dark and light modes. This helps you choose the perfect theme before applying it in settings.
+10 typographic styles that control how rendered markdown looks:
 
-### Color Preview
-
-The theme selection dialog shows 4 preview colors for each theme:
-
-- `--brand`: Primary brand color (buttons, highlights)
-- `--accent`: Accent color (links, interactive elements)
-- `--primary`: Primary UI color
-- `--secondary`: Secondary UI color
+- **Default** — System fonts, balanced spacing
+- **GitHub** — Familiar README style, underlined headings
+- **Academic** — Serif, indented paragraphs, scholarly feel
+- **Terminal** — Monospace, `#` heading prefixes, `>` list markers
+- **Magazine** — Serif, drop caps, generous line-height
+- **Compact** — Small type, tight spacing, information-dense
+- **Notebook** — Warm serif, wavy link underlines, cozy reading
+- **Billboard** — Public Sans, ultralight oversized headings
+- **Prose** — Source Serif, indented paragraphs, accent underlines
+- **Geometric** — Space Grotesk, sharp edges, accent heading borders
 
 ### CSS Variables
 
@@ -176,15 +203,18 @@ Themes are automatically detected and appear in the settings dialog. Both `dark`
 
 - [ ] **VIMODE**: codemirror-vim
 - [x] **Autosave**: local persistence
-- [ ] **Export**: PDF/HTML
+- [x] **Export**: print/PDF via `Ctrl+P`
+- [x] **File handler**: open `.md` files from OS file manager
 - [x] **Mobile**: touch gestures
+- [x] **Preview themes**: 10 typographic styles
 - [x] **PWA**: installable, offline cache
+- [x] **Reader mode**: full-width preview
 - [x] **Scroll**: toggle scroll follow
 - [ ] **Share**: ~~url hash content~~
 - [x] **Snap**: split resize snapping
 - [x] **Shortcuts**: command palette
-- [x] **Theming**: custom CSS look
-- [x] **Theme Presets**: multiple presets in settings
+- [x] **Color schemes**: 14 presets with dark/light modes
+- [x] **Preview themes**: independent typography & layout themes
 
 > [!NOTE]
 > _in no particular order_
