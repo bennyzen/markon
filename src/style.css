@@ -102,3 +102,61 @@ body {
 *::-webkit-scrollbar-track {
   background: transparent;
 }
+
+/* ===== PRINT ===== */
+@media print {
+  #bar, #bar-pull, #editor, #split, #toast, #splash,
+  #toc-wrapper, .profiler-overlay, #pwa-install-banner,
+  .preview-toggle, #resize-handle, .resize-hover-icon {
+    display: none !important;
+  }
+
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  #wrap {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  #preview {
+    overflow: visible !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  #previewhtml {
+    overflow: visible !important;
+    height: auto !important;
+    width: 100% !important;
+    padding: 0 !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  #previewhtml pre {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+  }
+
+  #previewhtml a {
+    color: black !important;
+    text-decoration: underline !important;
+  }
+
+  #previewhtml a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  #previewhtml a[href^="#"]::after,
+  #previewhtml a[href^="javascript"]::after {
+    content: none;
+  }
+}

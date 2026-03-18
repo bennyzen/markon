@@ -376,7 +376,7 @@ const createButton = (config, showToast) => {
 export const SETTINGS_ACTIONS = ACTIONS_CONFIG
 export const HOTKEYS = ACTIONS_CONFIG.filter(a => a.hotkey)
 	.map(a => [a.hotkey, a.label, a.id])
-	.concat([['ctrl+p', 'Toggle preview', 'preview-toggle']])
+	.concat([])
 
 // Create all buttons
 export const createButtons = (showToast, settingsDialog) => {

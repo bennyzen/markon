@@ -32,12 +32,6 @@ export const createKeyHandler = settingsDialog => e => {
 			return
 		}
 
-		// Special handling for toggle-preview
-		if (targetId === 'preview-toggle' && window.previewManager) {
-			window.previewManager.toggle()
-			return
-		}
-
 		// Special handling for cycle-color-scheme (button may not exist in DOM)
 		if (targetId === 'cycle-color-scheme') {
 			const handlers = getActionHandlers()

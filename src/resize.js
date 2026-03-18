@@ -27,7 +27,7 @@ export const createPreviewManager = wrap => {
 
 		// Add popover span with hotkey
 		const popoverSpan = createElement('span', {
-			textContent: 'Toggle • ctrl+p',
+			textContent: 'Toggle Preview',
 		})
 		previewToggle.appendChild(popoverSpan)
 	}
