@@ -38,6 +38,16 @@ export const createKeyHandler = settingsDialog => e => {
 			return
 		}
 
+		// Special handling for toggle-reader-mode (button may not exist in DOM)
+		if (targetId === 'toggle-reader-mode') {
+			const handlers = getActionHandlers()
+			const handler = handlers[targetId]
+			if (handler && window.showToast) {
+				handler(window.showToast)
+			}
+			return
+		}
+
 		// Special handling for toggle-editor-sync (button may not exist in DOM)
 		if (targetId === 'toggle-editor-sync') {
 			const handlers = getActionHandlers()

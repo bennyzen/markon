@@ -238,6 +238,28 @@ const ACTIONS_CONFIG = [
 		},
 	},
 	{
+		id: 'toggle-reader-mode',
+		label: 'Reader',
+		icon: 'tabler:book',
+		hotkey: 'ctrl+e',
+		gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2))',
+		showInToolbar: false,
+		handler: showToast => {
+			const wrap = document.getElementById('wrap')
+			const enabled = localStorage.getItem('reader-mode-enabled') !== 'true'
+			localStorage.setItem('reader-mode-enabled', String(enabled))
+			wrap?.classList.toggle('reader-mode', enabled)
+
+			const btn = document.getElementById('toggle-reader-mode')
+			if (btn) {
+				btn.setAttribute('aria-pressed', String(enabled))
+			}
+
+			showToast(`reader: ${enabled ? 'on' : 'off'}`, 1200, 'tabler:book')
+		},
+		isToggle: true,
+	},
+	{
 		id: 'toggle-editor-sync',
 		label: 'Sync',
 		icon: 'tabler:arrow-autofit-height-filled',

@@ -472,6 +472,18 @@ button {
   }
 }
 
+/* Reader mode - full-width preview, hidden editor */
+#wrap.reader-mode {
+  grid-template-columns: 0 0 1fr !important;
+}
+
+#wrap.reader-mode #editor,
+#wrap.reader-mode #split {
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 /* ===== TOC COMPONENTS ===== */
 
 #toc-wrapper {

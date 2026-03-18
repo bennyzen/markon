@@ -65,6 +65,11 @@ export const initUI = async ({ getMarkdown, setMarkdown, scrollToLine, view }) =
 		}
 	}
 
+	// Restore reader mode
+	if (localStorage.getItem('reader-mode-enabled') === 'true') {
+		wrap.classList.add('reader-mode')
+	}
+
 	// Expose markdown functions globally for button access
 	window.getMarkdown = getMarkdown
 	window.setMarkdown = setMarkdown
