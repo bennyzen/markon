@@ -56,7 +56,15 @@ export default defineConfig({
 				orientation: 'portrait-primary',
 				scope: '/',
 				start_url: '/',
-				icons: [
+				file_handlers: [
+				{
+					action: '/',
+					accept: {
+						'text/markdown': ['.md', '.markdown', '.mdown', '.mkd', '.mkdn'],
+					},
+				},
+			],
+			icons: [
 					{
 						src: 'icon-192.png',
 						sizes: '192x192',
