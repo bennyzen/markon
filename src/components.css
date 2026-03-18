@@ -547,6 +547,7 @@ button {
 
 .toc-item {
   font-size: 0.75rem;
+  font-family: var(--pv-font);
   color: var(--text);
   white-space: nowrap;
   overflow: hidden;
