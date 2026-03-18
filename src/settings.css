@@ -74,6 +74,15 @@
   padding-bottom: 4px;
 }
 
+.settings-section-heading {
+  color: var(--comment);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: "Monaspace Krypton", ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
 /* Shortcuts */
 .settings-shortcuts {
   display: grid;

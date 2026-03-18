@@ -1,11 +1,14 @@
 import {
 	applySpell,
 	applyTheme,
+	applyPreviewTheme,
 	copySmart,
 	createClickHandler,
 	createElement,
 	downloadText,
+	getPrefPreviewTheme,
 	openFileText,
+	PREVIEW_THEMES,
 } from './utils.js'
 
 // Check if PWA is installed (running in standalone mode)
@@ -187,7 +190,7 @@ const ACTIONS_CONFIG = [
 	},
 	{
 		id: 'toggle-theme',
-		label: 'Theme',
+		label: 'Mode',
 		icon: 'tabler:sun-electricity',
 		hotkey: 'ctrl+m',
 		gradient: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 191, 36, 0.2))',
@@ -197,9 +200,26 @@ const ACTIONS_CONFIG = [
 			const next = current === 'light' ? 'dark' : 'light'
 			const theme = document.documentElement.getAttribute('data-theme') || 'panda'
 			await applyTheme(theme, next)
-			showToast(`theme: ${next}`, 1200, 'tabler:palette')
+			showToast(`mode: ${next}`, 1200, 'tabler:palette')
 		},
 		isToggle: true,
+	},
+	{
+		id: 'cycle-color-scheme',
+		label: 'Scheme',
+		icon: 'tabler:palette',
+		hotkey: 'ctrl+shift+m',
+		gradient: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 191, 36, 0.2))',
+		showInToolbar: false,
+		handler: async showToast => {
+			const { extractThemesFromCSS, getPrefTheme } = await import('./utils.js')
+			const themes = extractThemesFromCSS()
+			const { theme: current, mode } = getPrefTheme()
+			const idx = themes.findIndex(t => t.id === current)
+			const next = themes[(idx + 1) % themes.length]
+			await applyTheme(next.id, mode)
+			showToast(`scheme: ${next.id}`, 1200, 'tabler:palette')
+		},
 	},
 	// Settings-only actions
 	{
@@ -235,6 +255,21 @@ const ACTIONS_CONFIG = [
 			} else {
 				showToast('clipboard empty', 1200, 'tabler:alert-circle')
 			}
+		},
+	},
+	{
+		id: 'cycle-preview-theme',
+		label: 'Preview',
+		icon: 'tabler:typography',
+		hotkey: 'ctrl+j',
+		gradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2))',
+		showInToolbar: false,
+		handler: showToast => {
+			const current = getPrefPreviewTheme()
+			const idx = PREVIEW_THEMES.findIndex(t => t.id === current)
+			const next = PREVIEW_THEMES[(idx + 1) % PREVIEW_THEMES.length]
+			applyPreviewTheme(next.id)
+			showToast(`preview: ${next.label}`, 1200, 'tabler:typography')
 		},
 	},
 	{

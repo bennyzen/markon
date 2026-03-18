@@ -227,6 +227,29 @@ const getThemeColors = themeName => {
 }
 
 
+export const PREVIEW_THEMES = [
+	{ id: 'default', label: 'Default' },
+	{ id: 'github', label: 'GitHub' },
+	{ id: 'tufte', label: 'Academic' },
+	{ id: 'terminal', label: 'Terminal' },
+	{ id: 'magazine', label: 'Magazine' },
+	{ id: 'compact', label: 'Compact' },
+	{ id: 'notebook', label: 'Notebook' },
+]
+
+export const getPrefPreviewTheme = () =>
+	localStorage.getItem('preview-theme') || 'default'
+
+export const applyPreviewTheme = themeName => {
+	const html = document.documentElement
+	if (themeName === 'default') {
+		html.removeAttribute('data-preview-theme')
+	} else {
+		html.setAttribute('data-preview-theme', themeName)
+	}
+	localStorage.setItem('preview-theme', themeName)
+}
+
 export const getPrefTheme = () => {
 	const params = new URLSearchParams(window.location.search)
 	const theme = params.get('theme') || localStorage.getItem('theme-name') || 'solarized'

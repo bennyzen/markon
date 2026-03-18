@@ -2,8 +2,11 @@ import {
 	createClickHandler,
 	createElement,
 	applyTheme,
+	applyPreviewTheme,
 	getPrefTheme,
+	getPrefPreviewTheme,
 	extractThemesFromCSS,
+	PREVIEW_THEMES,
 	saveCustomThemesCSS,
 	clearCustomThemesCSS,
 	openFileCSS,
@@ -27,10 +30,11 @@ export const createSettingsDialog = showToast => {
 
 	const content = createElement('div', { className: 'settings-content' })
 
-	const themesSection = createThemesSection()
+	const colorSchemesSection = createColorSchemesSection()
+	const previewThemesSection = createPreviewThemesSection()
 	const actionsSection = createActionsSection(showToast)
 
-	content.append(themesSection, actionsSection)
+	content.append(colorSchemesSection, previewThemesSection, actionsSection)
 
 	const footer = createElement('div', { className: 'settings-footer' })
 	const heart = createElement('span', {
@@ -83,9 +87,11 @@ export const createSettingsDialog = showToast => {
 			document.body.appendChild(dialog)
 		}
 		dialog.showModal()
-		// Highlight current theme after dialog is shown
-		const themeGrid = dialog.querySelector('.settings-theme-grid')
-		if (themeGrid) highlightCurrentTheme(themeGrid)
+		// Highlight current selections after dialog is shown
+		const colorSchemeGrid = dialog.querySelector('.settings-color-scheme-grid')
+		if (colorSchemeGrid) highlightCurrentColorScheme(colorSchemeGrid)
+		const previewThemeGrid = dialog.querySelector('.settings-preview-theme-grid')
+		if (previewThemeGrid) highlightCurrentPreviewTheme(previewThemeGrid)
 	}
 
 	const hide = () => {
@@ -186,12 +192,18 @@ const createActionsSection = showToast => {
 	return section
 }
 
-// Create themes section
-const createThemesSection = () => {
+// Create color schemes section (formerly "themes")
+const createColorSchemesSection = () => {
 	const section = createElement('div', { className: 'settings-section' })
 
-	// Theme grid
-	const themeGrid = createElement('div', { className: 'settings-theme-grid' })
+	const heading = createElement('div', {
+		className: 'settings-section-heading',
+		textContent: 'Color Schemes',
+	})
+	section.appendChild(heading)
+
+	// Color scheme grid
+	const themeGrid = createElement('div', { className: 'settings-color-scheme-grid settings-theme-grid' })
 
 	// Get themes dynamically from CSS
 	const themes = extractThemesFromCSS()
@@ -225,7 +237,7 @@ const createThemesSection = () => {
 		themeCard.addEventListener('click', async () => {
 			const currentMode = getPrefTheme().mode
 			await applyTheme(theme.id, currentMode)
-			highlightCurrentTheme(themeGrid)
+			highlightCurrentColorScheme(themeGrid)
 		})
 
 		themeGrid.appendChild(themeCard)
@@ -303,13 +315,59 @@ const createThemesSection = () => {
 	return section
 }
 
-// Highlight current theme in settings dialog
-const highlightCurrentTheme = themeGrid => {
+// Highlight current color scheme in settings dialog
+const highlightCurrentColorScheme = themeGrid => {
 	const currentTheme = document.documentElement.getAttribute('data-theme')
 
 	// Clear all selections and highlight current
 	themeGrid.querySelectorAll('.settings-theme-card').forEach(card => {
 		card.classList.toggle('selected', card.classList.contains(`theme-${currentTheme}`))
+	})
+}
+
+// Create preview themes section
+const createPreviewThemesSection = () => {
+	const section = createElement('div', { className: 'settings-section' })
+
+	const heading = createElement('div', {
+		className: 'settings-section-heading',
+		textContent: 'Preview Themes',
+	})
+	section.appendChild(heading)
+
+	const grid = createElement('div', { className: 'settings-preview-theme-grid settings-theme-grid' })
+
+	PREVIEW_THEMES.forEach(theme => {
+		const card = createElement('div', {
+			className: `settings-theme-card preview-theme-${theme.id}`,
+			'data-preview-theme': theme.id,
+		})
+
+		const name = createElement('div', {
+			className: 'settings-theme-name',
+			textContent: theme.label,
+		})
+
+		card.appendChild(name)
+
+		createClickHandler(card, () => {
+			applyPreviewTheme(theme.id)
+			highlightCurrentPreviewTheme(grid)
+		})
+
+		grid.appendChild(card)
+	})
+
+	section.append(grid)
+	return section
+}
+
+// Highlight current preview theme in settings dialog
+const highlightCurrentPreviewTheme = grid => {
+	const current = getPrefPreviewTheme()
+
+	grid.querySelectorAll('.settings-theme-card').forEach(card => {
+		card.classList.toggle('selected', card.classList.contains(`preview-theme-${current}`))
 	})
 }
 

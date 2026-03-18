@@ -6,7 +6,7 @@ import { createPreviewManager, createResizeHandler } from './resize.js'
 import createToolbar from './toolbar.js'
 import { createTOC } from './toc.js'
 import { createScrollSync } from './sync.js'
-import { applyTheme, createPointerHandler, createToast, getPrefTheme } from './utils.js'
+import { applyTheme, applyPreviewTheme, createPointerHandler, createToast, getPrefTheme, getPrefPreviewTheme } from './utils.js'
 
 // Initialize UI components
 export const initUI = async ({ getMarkdown, setMarkdown, scrollToLine, view }) => {
@@ -14,9 +14,10 @@ export const initUI = async ({ getMarkdown, setMarkdown, scrollToLine, view }) =
 	const toast = document.getElementById('toast')
 	const showToast = createToast(toast)
 
-	// Setup theme
+	// Setup theme and preview theme
 	const { theme, mode } = getPrefTheme()
 	await applyTheme(theme, mode)
+	applyPreviewTheme(getPrefPreviewTheme())
 
 	// Setup settings system
 	const settingsDialog = createSettingsDialog(showToast)

@@ -272,9 +272,9 @@ button {
   padding: 16px;
   background: var(--bg-light);
   color: var(--text);
-  font-family: system-ui, Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 1.5;
+  font-family: var(--pv-font);
+  font-size: var(--pv-font-size);
+  line-height: var(--pv-line-height);
   box-sizing: border-box;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -289,15 +289,19 @@ button {
   h5,
   h6 {
     margin: 1.2em 0 0.4em;
+    font-weight: var(--pv-heading-weight);
+    font-style: var(--pv-heading-style);
+    text-transform: var(--pv-heading-transform);
+    letter-spacing: var(--pv-heading-letter-spacing);
   }
 
   p {
-    margin: 0.6em 0;
+    margin: var(--pv-paragraph-spacing) 0;
   }
 
   ul,
   ol {
-    margin: 0.6em 0 0.6em 1.2em;
+    margin: var(--pv-paragraph-spacing) 0 var(--pv-paragraph-spacing) 1.2em;
   }
 
   /* Checkboxes */
@@ -345,41 +349,44 @@ button {
 
   blockquote {
     margin: 0.8em 0;
-    padding-left: 1em;
-    border-left: 3px solid var(--text-alpha);
+    padding: var(--pv-blockquote-padding);
+    border-left: var(--pv-blockquote-border);
+    background: var(--pv-blockquote-bg);
+    border-radius: var(--pv-blockquote-radius);
+    font-style: var(--pv-blockquote-style);
     opacity: 0.9;
   }
 
   hr {
     border: none;
-    height: 1px;
-    background: var(--text-alpha);
+    height: var(--pv-hr-height);
+    background: var(--pv-hr-bg);
     margin: 0.8em 0;
   }
 
   a {
     color: var(--accent);
-    text-decoration: underline;
+    text-decoration: var(--pv-link-decoration);
+    text-decoration-style: var(--pv-link-decoration-style);
   }
 
   /* Code elements */
   pre,
   code {
     background: var(--text-alpha);
-    border-radius: 14px;
-    font-family:
-      "Monaspace Krypton", ui-monospace, SFMono-Regular, Menlo, Monaco,
-      Consolas, "Liberation Mono", "Courier New", monospace;
+    border-radius: var(--pv-code-radius);
+    font-family: var(--pv-font-mono);
   }
 
   pre {
-    padding: 0.8em;
+    padding: var(--pv-pre-padding);
     overflow: auto;
+    border: var(--pv-pre-border);
   }
 
   code {
     padding: 0 0.3em;
-    border-radius: 6px;
+    border-radius: var(--pv-code-inline-radius);
   }
 
   kbd {
