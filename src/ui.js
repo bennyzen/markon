@@ -66,8 +66,8 @@ export const initUI = async ({ getMarkdown, setMarkdown, scrollToLine, view }) =
 		}
 	}
 
-	// Restore reader mode
-	if (localStorage.getItem('reader-mode-enabled') === 'true') {
+	// Restore reader mode (default: on)
+	if (localStorage.getItem('reader-mode-enabled') !== 'false') {
 		wrap.classList.add('reader-mode')
 	}
 

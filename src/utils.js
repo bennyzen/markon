@@ -241,7 +241,7 @@ export const PREVIEW_THEMES = [
 ]
 
 export const getPrefPreviewTheme = () =>
-	localStorage.getItem('preview-theme') || 'default'
+	localStorage.getItem('preview-theme') || 'billboard'
 
 export const applyPreviewTheme = themeName => {
 	const html = document.documentElement
@@ -255,7 +255,7 @@ export const applyPreviewTheme = themeName => {
 
 export const getPrefTheme = () => {
 	const params = new URLSearchParams(window.location.search)
-	const theme = params.get('theme') || localStorage.getItem('theme-name') || 'solarized'
+	const theme = params.get('theme') || localStorage.getItem('theme-name') || 'one-dark'
 	const mode = params.get('mode') || localStorage.getItem('theme-mode') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
 
 	return { theme, mode }

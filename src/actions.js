@@ -281,7 +281,7 @@ const ACTIONS_CONFIG = [
 		showInToolbar: false,
 		handler: showToast => {
 			const wrap = document.getElementById('wrap')
-			const enabled = localStorage.getItem('reader-mode-enabled') !== 'true'
+			const enabled = localStorage.getItem('reader-mode-enabled') === 'false'
 			localStorage.setItem('reader-mode-enabled', String(enabled))
 			wrap?.classList.toggle('reader-mode', enabled)
 
