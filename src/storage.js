@@ -16,8 +16,8 @@ const createStorageWorker = () => {
 
 			switch (type) {
 				case 'CONTENT_LOADED':
-					// Worker loaded content from IndexedDB
-					if (content) {
+					// Skip restore if a file was opened via OS file handler
+					if (content && !window.__launchedWithFile) {
 						window.setMarkdown?.(content)
 					}
 					break

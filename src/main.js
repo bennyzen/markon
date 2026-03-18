@@ -59,6 +59,18 @@ const boot = async () => {
 		updatePWAUI()
 	})
 
+	// Handle files opened via OS "Open With" (file_handlers in manifest)
+	if ('launchQueue' in window) {
+		window.launchQueue.setConsumer(async launchParams => {
+			if (!launchParams.files.length) return
+			const fileHandle = launchParams.files[0]
+			const file = await fileHandle.getFile()
+			const text = await file.text()
+			window.__launchedWithFile = true
+			setMarkdown(text)
+		})
+	}
+
 	// Update PWA UI on initial load (check if already installed)
 	updatePWAUI()
 
